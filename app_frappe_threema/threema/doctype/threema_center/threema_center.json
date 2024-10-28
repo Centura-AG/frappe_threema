@@ -1,0 +1,56 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-10-28 07:49:33.959093",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "receiver_list",
+  "messsage",
+  "send_message"
+ ],
+ "fields": [
+  {
+   "fieldname": "receiver_list",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Receiver List",
+   "reqd": 1
+  },
+  {
+   "fieldname": "messsage",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Messsage",
+   "reqd": 1
+  },
+  {
+   "fieldname": "send_message",
+   "fieldtype": "Button",
+   "label": "Send Message"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2024-10-28 07:51:37.849858",
+ "modified_by": "Administrator",
+ "module": "Threema",
+ "name": "Threema Center",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
