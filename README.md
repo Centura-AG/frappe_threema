@@ -1,2 +1,7 @@
-# frappe_threema
-Threema API Integration for Frappe
+## Frappe Threema
+
+Threema API Intagration for Frappe
+
+#### License
+
+mit
