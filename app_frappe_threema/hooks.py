@@ -5,6 +5,15 @@ app_description = "Threema API Intagration for Frappe"
 app_email = "info@centura.ch"
 app_license = "mit"
 
+fixtures = [
+    {
+        "dt": "DocType",
+        "filters": [["name", "in", [
+            "Notification"
+        ]]]
+    }
+]
+
 # Apps
 # ------------------
 

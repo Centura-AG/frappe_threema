@@ -13,23 +13,29 @@
   {
    "fieldname": "gateway_url",
    "fieldtype": "Data",
-   "label": "Gateway URL"
+   "in_list_view": 1,
+   "label": "Gateway URL",
+   "reqd": 1
   },
   {
    "fieldname": "from",
    "fieldtype": "Data",
-   "label": "From"
+   "in_list_view": 1,
+   "label": "From",
+   "reqd": 1
   },
   {
    "fieldname": "secret",
    "fieldtype": "Password",
-   "label": "Secret"
+   "in_list_view": 1,
+   "label": "Secret",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2024-10-28 07:37:14.079126",
+ "modified": "2024-11-02 14:12:59.807872",
  "modified_by": "Administrator",
  "module": "Threema",
  "name": "Threema Settings",
