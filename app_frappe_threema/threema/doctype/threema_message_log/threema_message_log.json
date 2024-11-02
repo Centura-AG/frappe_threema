@@ -1,31 +1,26 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "format:SYS-THREEMA-{#####} ",
  "creation": "2024-10-28 07:45:51.659687",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "sent_on",
-  "message",
+  "sent_at",
   "sender",
+  "message",
   "recipient"
  ],
  "fields": [
   {
-   "fieldname": "sent_on",
-   "fieldtype": "Datetime",
-   "label": "Sent At",
-   "read_only": 1
-  },
-  {
    "fieldname": "message",
-   "fieldtype": "Data",
+   "fieldtype": "Text",
    "label": "Message",
    "read_only": 1
   },
   {
    "fieldname": "recipient",
-   "fieldtype": "Data",
+   "fieldtype": "Code",
    "label": "Recipient",
    "read_only": 1
   },
@@ -34,14 +29,21 @@
    "fieldtype": "Data",
    "label": "Sender",
    "read_only": 1
+  },
+  {
+   "fieldname": "sent_at",
+   "fieldtype": "Datetime",
+   "label": "Sent At",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-10-28 13:55:42.852671",
+ "modified": "2024-11-02 14:16:26.431986",
  "modified_by": "Administrator",
  "module": "Threema",
  "name": "Threema Message Log",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {
