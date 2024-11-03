@@ -4,33 +4,43 @@
 import frappe
 import json
 from frappe.email.doctype.notification.notification import Notification
-
+from app_frappe_threema.threema.doctype.threema_settings.threema_settings import send_message
 
 class CustomNotification(Notification):
+	def send_threema_msg(self, doc, context):
+		send_message(
+			receiver_list=self.get_receiver_list(doc, context),
+			msg=frappe.render_template(self.message, context),
+		)
+
 	def send(self, doc):
 		context = {"doc": doc, "alert": self, "comments": None}
 		if doc.get("_comments"):
 			context["comments"] = json.loads(doc.get("_comments"))
 
-		if super.is_standard:
-			super.load_standard_properties(context)
+		if self.is_standard:
+			self.load_standard_properties(context)
+
 		try:
-			if super.channel == "Email":
-				super.send_an_email(doc, context)
+			if self.channel == "Email":
+				self.send_an_email(doc, context)
 
-			if super.channel == "Slack":
-				super.send_a_slack_msg(doc, context)
+			if self.channel == "Slack":
+				self.send_a_slack_msg(doc, context)
 
-			if super.channel == "SMS":
-				super.send_sms(doc, context)
+			if self.channel == "SMS":
+				self.send_sms(doc, context)
 
-			if super.channel == "System Notification" or super.send_system_notification:
-				super.create_system_notification(doc, context)
+			if self.channel == "Threema":
+				self.send_threema_msg(doc, context)
+
+			if self.channel == "System Notification" or self.send_system_notification:
+				self.create_system_notification(doc, context)
 
 		except Exception:
-			super.log_error("Failed to send Notification")
+			self.log_error("Failed to send Notification")
 
-		if super.set_property_after_alert:
+		if self.set_property_after_alert:
 			allow_update = True
 			if (
 					doc.docstatus.is_submitted()
@@ -39,21 +49,21 @@ class CustomNotification(Notification):
 				allow_update = False
 			try:
 				if allow_update and not doc.flags.in_notification_update:
-					fieldname = super.set_property_after_alert
-					value = super.property_value
+					fieldname = self.set_property_after_alert
+					value = self.property_value
 					if doc.meta.get_field(fieldname).fieldtype in frappe.model.numeric_fieldtypes:
 						value = frappe.utils.cint(value)
 
 					doc.reload()
 					doc.set(fieldname, value)
 					doc.flags.updater_reference = {
-						"doctype": super.doctype,
-						"docname": super.name,
+						"doctype": self.doctype,
+						"docname": self.name,
 						"label": _("via Notification"),
 					}
 					doc.flags.in_notification_update = True
 					doc.save(ignore_permissions=True)
 					doc.flags.in_notification_update = False
 			except Exception:
-				super.log_error("Document update failed")
+				self.log_error("Document update failed")
 
