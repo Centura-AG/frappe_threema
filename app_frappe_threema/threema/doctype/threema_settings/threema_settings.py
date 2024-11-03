@@ -5,13 +5,14 @@ import frappe
 from frappe import _, msgprint, throw
 from frappe.model.document import Document
 from frappe.utils import now_datetime
-
+import re
 
 class ThreemaSettings(Document):
 	pass
 
 def validate_receiver_nos(receiver_list):
 	validated_receiver_list = []
+
 	for d in receiver_list:
 		if not d:
 			continue
@@ -55,19 +56,19 @@ def send_via_gateway(arg):
 	headers = get_headers()
 
 	message = frappe.safe_decode(arg.get("message"))
-	args = {"text": message}
+	threema_args = {"text": message}
 	if ts.get("from"):
-		args["from"] = ts.get("from")
+		threema_args["from"] = ts.get("from")
 
 	if ts.get("secret"):
-		args["secret"] = ts.get_password("secret")
+		threema_args["secret"] = ts.get_password("secret")
 
 	success_list = []
-	for d in arg.get("receiver_list"):
-		args["phone"] = d
-		status = send_request(ts.gateway_url, args, headers)
+	for contact in arg.get("receiver_list"):
+		threema_args[get_recipient_specifier(contact)] = contact
+		status = send_request(ts.gateway_url, threema_args, headers)
 		if 200 <= status < 300:
-			success_list.append(d)
+			success_list.append(contact)
 
 	if len(success_list) > 0:
 		args.update(arg)
@@ -80,21 +81,43 @@ def get_headers():
 	headers = {"Accept": "text/plain, text/html, */*"}
 	return headers
 
-def send_request(gateway_url, args, headers=None):
+def send_request(gateway_url, threema_args, headers=None):
 	import requests
 
 	if not headers:
 		headers = get_headers()
 	kwargs = {"headers": headers}
-	kwargs["data"] = args
+	kwargs["data"] = threema_args
 	response = requests.post(gateway_url, **kwargs)
 
 	response.raise_for_status()
 	return response.status_code
 
 
-# Create Log
-# =========================================================
+def get_recipient_specifier(contact):
+	if is_valid_recipient_identity(contact):
+		return "to"
+	elif is_valid_phone_number(contact):
+		return "phone"
+	elif is_valid_email_address(contact):
+		return "email"
+	else:
+		msgprint(_("This is not a valid indetity, phone number or email: " + contact))
+
+def is_valid_recipient_identity(identity):
+	# Check if the identity is exactly 8 alphanumeric characters
+	return bool(re.fullmatch(r'[A-Za-z0-9]{8}', identity))
+
+def is_valid_phone_number(phone):
+	# Check if the phone number is in E.164 format, allowing an optional leading "+"
+	return bool(re.fullmatch(r'\+?\d{1,15}', phone))
+
+def is_valid_email_address(email):
+	# Basic regular expression for validating an Email
+	pattern = r'^[\w\.-]+@[\w\.-]+\.\w+$'
+	return bool(re.match(pattern, email))
+
+
 def create_log(args, sent_to):
 	sl = frappe.new_doc("Threema Message Log")
 	sl.sent_at = now_datetime()
