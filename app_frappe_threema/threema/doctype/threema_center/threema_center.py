@@ -1,14 +1,11 @@
 # Copyright (c) 2024, Centura AG and contributors
 # For license information, please see license.txt
 
-# import frappe
 import frappe
 from frappe import _, msgprint
 from app_frappe_threema.threema.doctype.threema_settings.threema_settings import send_message
 from frappe.model.document import Document
 from frappe.utils import cstr
-
-
 
 class ThreemaCenter(Document):
 	def get_receiver_nos(self):
