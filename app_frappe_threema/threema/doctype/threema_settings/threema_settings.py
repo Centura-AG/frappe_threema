@@ -13,15 +13,15 @@ class ThreemaSettings(Document):
 def validate_receiver_nos(receiver_list):
 	validated_receiver_list = []
 
-	for d in receiver_list:
-		if not d:
+	for contact in receiver_list:
+		if not contact:
 			continue
 
 		# remove invalid character
 		for x in [" ", "-", "(", ")"]:
-			d = d.replace(x, "")
+			contact = contact.replace(x, "")
 
-		validated_receiver_list.append(d)
+		validated_receiver_list.append(contact)
 
 	if not validated_receiver_list:
 		throw(_("Please enter valid threema nos"))
@@ -32,7 +32,6 @@ def validate_receiver_nos(receiver_list):
 @frappe.whitelist()
 def send_message(receiver_list, msg, success_msg=True):
 		import json
-
 		if isinstance(receiver_list, str):
 			receiver_list = json.loads(receiver_list)
 			if not isinstance(receiver_list, list):
@@ -71,8 +70,8 @@ def send_via_gateway(arg):
 			success_list.append(contact)
 
 	if len(success_list) > 0:
-		args.update(arg)
-		create_log(args, success_list)
+		threema_args.update(arg)
+		create_log(threema_args, success_list)
 		if arg.get("success_msg"):
 			frappe.msgprint(_("Threema Message sent to : {0}").format("\n" + "\n".join(success_list)))
 
