@@ -9,7 +9,7 @@ fixtures = [
     {
         "dt": "DocType",
         "filters": [["name", "in", [
-            "Notification"
+            "Notification", "User"
         ]]]
     }
 ]
