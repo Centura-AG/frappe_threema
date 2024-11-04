@@ -5,17 +5,16 @@
 ## Features
 - Seamlessly integrates Threema messaging within Frappe.
 - Allows sending messages through "Threema Center" or using "Notification".
-- Adds a "Threema ID" field to the User Doctype, prioritizing it as the contact method when using the Threema integration. If unavailable, it fallback to mobile number or email.
 
 ## Installation
 
 ### Step 1: Install the App
 ```bash
-bench get-app https://github.com/Centura-AG/app_frappe_threema
+bench get-app https://github.com/Centura-AG/frappe_threema
 ```
 ### Step 2: Install the App on a specific Site
 ```bash
-bench --site [sitename] install-app app_frappe_threema   `
+bench --site [sitename] install-app frappe_threema   `
 ```
 ### Step 3: Configure Threema Settings
 

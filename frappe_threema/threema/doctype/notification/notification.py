@@ -5,7 +5,7 @@ import frappe
 import json
 from frappe.core.doctype.role.role import get_info_based_on_role, get_user_info
 from frappe.email.doctype.notification.notification import Notification
-from app_frappe_threema.threema.doctype.threema_settings.threema_settings import send_message
+from frappe_threema.threema.doctype.threema_settings.threema_settings import send_message
 
 class CustomNotification(Notification):
 
@@ -21,13 +21,10 @@ class CustomNotification(Notification):
 			# For sending messages to the owner's mobile phone number
 			if recipient.receiver_by_document_field == "owner":
 				owner = [dict(user_name=doc.get("owner"))]
-				threema_id = get_user_info(owner, "threema_id")[0]
 				mobile_no = get_user_info(owner, "mobile_no")[0]
 				email = get_user_info(owner, "email")[0]
 
-				if bool(threema_id and threema_id.strip()):
-					receiver_list.append(threema_id)
-				elif bool(mobile_no and mobile_no.strip()):
+				if bool(mobile_no and mobile_no.strip()):
 					receiver_list.append(mobile_no)
 				elif bool(email and email.strip()):
 					receiver_list.append(email)
@@ -38,9 +35,6 @@ class CustomNotification(Notification):
 
 			# For sending messages to specified role
 			if recipient.receiver_by_role:
-				threema_id = get_info_based_on_role(
-					recipient.receiver_by_role, "threema_id", ignore_permissions=True
-				)[0]
 				mobile_no = get_info_based_on_role(
 					recipient.receiver_by_role, "mobile_no", ignore_permissions=True
 				)[0]
@@ -48,9 +42,7 @@ class CustomNotification(Notification):
 					recipient.receiver_by_role, "email", ignore_permissions=True
 				)[0]
 
-				if bool(threema_id and threema_id.strip()):
-					receiver_list.append(threema_id)
-				elif bool(mobile_no and mobile_no.strip()):
+				if bool(mobile_no and mobile_no.strip()):
 					receiver_list.append(mobile_no)
 				elif bool(email and email.strip()):
 					receiver_list.append(email)

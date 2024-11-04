@@ -1,5 +1,5 @@
 [project]
-name = "app_frappe_threema"
+name = "frappe_threema"
 authors = [
     { name = "Centura AG", email = "info@centura.ch"}
 ]

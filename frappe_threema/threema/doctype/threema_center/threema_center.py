@@ -3,7 +3,7 @@
 
 import frappe
 from frappe import _, msgprint
-from app_frappe_threema.threema.doctype.threema_settings.threema_settings import send_message
+from frappe_threema.threema.doctype.threema_settings.threema_settings import send_message
 from frappe.model.document import Document
 from frappe.utils import cstr
 

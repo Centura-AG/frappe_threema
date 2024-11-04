@@ -1,4 +1,4 @@
-app_name = "app_frappe_threema"
+app_name = "frappe_threema"
 app_title = "Frappe Threema"
 app_publisher = "Centura AG"
 app_description = "Threema API Intagration for Frappe"
@@ -9,7 +9,7 @@ fixtures = [
     {
         "dt": "DocType",
         "filters": [["name", "in", [
-            "Notification", "User"
+            "Notification"
         ]]]
     }
 ]
@@ -22,11 +22,11 @@ fixtures = [
 # Each item in the list will be shown as an app in the apps page
 # add_to_apps_screen = [
 # 	{
-# 		"name": "app_frappe_threema",
-# 		"logo": "/assets/app_frappe_threema/logo.png",
+# 		"name": "frappe_threema",
+# 		"logo": "/assets/frappe_threema/logo.png",
 # 		"title": "Frappe Threema",
-# 		"route": "/app_frappe_threema",
-# 		"has_permission": "app_frappe_threema.api.permission.has_app_permission"
+# 		"route": "/frappe_threema",
+# 		"has_permission": "frappe_threema.api.permission.has_app_permission"
 # 	}
 # ]
 
@@ -34,15 +34,15 @@ fixtures = [
 # ------------------
 
 # include js, css files in header of desk.html
-# app_include_css = "/assets/app_frappe_threema/css/app_frappe_threema.css"
-# app_include_js = "/assets/app_frappe_threema/js/app_frappe_threema.js"
+# app_include_css = "/assets/frappe_threema/css/frappe_threema.css"
+# app_include_js = "/assets/frappe_threema/js/frappe_threema.js"
 
 # include js, css files in header of web template
-# web_include_css = "/assets/app_frappe_threema/css/app_frappe_threema.css"
-# web_include_js = "/assets/app_frappe_threema/js/app_frappe_threema.js"
+# web_include_css = "/assets/frappe_threema/css/frappe_threema.css"
+# web_include_js = "/assets/frappe_threema/js/frappe_threema.js"
 
 # include custom scss in every website theme (without file extension ".scss")
-# website_theme_scss = "app_frappe_threema/public/scss/website"
+# website_theme_scss = "frappe_threema/public/scss/website"
 
 # include js, css files in header of web form
 # webform_include_js = {"doctype": "public/js/doctype.js"}
@@ -60,7 +60,7 @@ fixtures = [
 # Svg Icons
 # ------------------
 # include app icons in desk
-# app_include_icons = "app_frappe_threema/public/icons.svg"
+# app_include_icons = "frappe_threema/public/icons.svg"
 
 # Home Pages
 # ----------
@@ -84,43 +84,43 @@ fixtures = [
 
 # add methods and filters to jinja environment
 # jinja = {
-# 	"methods": "app_frappe_threema.utils.jinja_methods",
-# 	"filters": "app_frappe_threema.utils.jinja_filters"
+# 	"methods": "frappe_threema.utils.jinja_methods",
+# 	"filters": "frappe_threema.utils.jinja_filters"
 # }
 
 # Installation
 # ------------
 
-# before_install = "app_frappe_threema.install.before_install"
-# after_install = "app_frappe_threema.install.after_install"
+# before_install = "frappe_threema.install.before_install"
+# after_install = "frappe_threema.install.after_install"
 
 # Uninstallation
 # ------------
 
-# before_uninstall = "app_frappe_threema.uninstall.before_uninstall"
-# after_uninstall = "app_frappe_threema.uninstall.after_uninstall"
+# before_uninstall = "frappe_threema.uninstall.before_uninstall"
+# after_uninstall = "frappe_threema.uninstall.after_uninstall"
 
 # Integration Setup
 # ------------------
 # To set up dependencies/integrations with other apps
 # Name of the app being installed is passed as an argument
 
-# before_app_install = "app_frappe_threema.utils.before_app_install"
-# after_app_install = "app_frappe_threema.utils.after_app_install"
+# before_app_install = "frappe_threema.utils.before_app_install"
+# after_app_install = "frappe_threema.utils.after_app_install"
 
 # Integration Cleanup
 # -------------------
 # To clean up dependencies/integrations with other apps
 # Name of the app being uninstalled is passed as an argument
 
-# before_app_uninstall = "app_frappe_threema.utils.before_app_uninstall"
-# after_app_uninstall = "app_frappe_threema.utils.after_app_uninstall"
+# before_app_uninstall = "frappe_threema.utils.before_app_uninstall"
+# after_app_uninstall = "frappe_threema.utils.after_app_uninstall"
 
 # Desk Notifications
 # ------------------
 # See frappe.core.notifications.get_notification_config
 
-# notification_config = "app_frappe_threema.notifications.get_notification_config"
+# notification_config = "frappe_threema.notifications.get_notification_config"
 
 # Permissions
 # -----------
@@ -139,7 +139,7 @@ fixtures = [
 # Override standard doctype classes
 
 override_doctype_class = {
- 	"Notification": "app_frappe_threema.threema.doctype.notification.notification.CustomNotification"
+ 	"Notification": "frappe_threema.threema.doctype.notification.notification.CustomNotification"
 }
 
 # Document Events
@@ -159,39 +159,39 @@ override_doctype_class = {
 
 # scheduler_events = {
 # 	"all": [
-# 		"app_frappe_threema.tasks.all"
+# 		"frappe_threema.tasks.all"
 # 	],
 # 	"daily": [
-# 		"app_frappe_threema.tasks.daily"
+# 		"frappe_threema.tasks.daily"
 # 	],
 # 	"hourly": [
-# 		"app_frappe_threema.tasks.hourly"
+# 		"frappe_threema.tasks.hourly"
 # 	],
 # 	"weekly": [
-# 		"app_frappe_threema.tasks.weekly"
+# 		"frappe_threema.tasks.weekly"
 # 	],
 # 	"monthly": [
-# 		"app_frappe_threema.tasks.monthly"
+# 		"frappe_threema.tasks.monthly"
 # 	],
 # }
 
 # Testing
 # -------
 
-# before_tests = "app_frappe_threema.install.before_tests"
+# before_tests = "frappe_threema.install.before_tests"
 
 # Overriding Methods
 # ------------------------------
 #
 # override_whitelisted_methods = {
-# 	"frappe.desk.doctype.event.event.get_events": "app_frappe_threema.event.get_events"
+# 	"frappe.desk.doctype.event.event.get_events": "frappe_threema.event.get_events"
 # }
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
 # along with any modifications made in other Frappe apps
 # override_doctype_dashboards = {
-# 	"Task": "app_frappe_threema.task.get_dashboard_data"
+# 	"Task": "frappe_threema.task.get_dashboard_data"
 # }
 
 # exempt linked doctypes from being automatically cancelled
@@ -205,13 +205,13 @@ override_doctype_class = {
 
 # Request Events
 # ----------------
-# before_request = ["app_frappe_threema.utils.before_request"]
-# after_request = ["app_frappe_threema.utils.after_request"]
+# before_request = ["frappe_threema.utils.before_request"]
+# after_request = ["frappe_threema.utils.after_request"]
 
 # Job Events
 # ----------
-# before_job = ["app_frappe_threema.utils.before_job"]
-# after_job = ["app_frappe_threema.utils.after_job"]
+# before_job = ["frappe_threema.utils.before_job"]
+# after_job = ["frappe_threema.utils.after_job"]
 
 # User Data Protection
 # --------------------
@@ -241,7 +241,7 @@ override_doctype_class = {
 # --------------------------------
 
 # auth_hooks = [
-# 	"app_frappe_threema.auth.validate"
+# 	"frappe_threema.auth.validate"
 # ]
 
 # Automatically update python controller files with type annotations for this app.
