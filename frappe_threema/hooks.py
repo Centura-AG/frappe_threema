@@ -7,9 +7,9 @@ app_license = "mit"
 
 fixtures = [
     {
-        "dt": "DocType",
-        "filters": [["name", "in", [
-            "Notification"
+        "dt": "Custom Field",
+        "filters": [["module", "in", [
+            "Threema"
         ]]]
     }
 ]

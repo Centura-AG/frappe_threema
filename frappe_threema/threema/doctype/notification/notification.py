@@ -8,7 +8,6 @@ from frappe.email.doctype.notification.notification import Notification
 from frappe_threema.threema.doctype.threema_settings.threema_settings import send_message
 
 class CustomNotification(Notification):
-
 	def get_threema_receiver_list(self, doc, context):
 		"""return receiver list based on the doc field and role specified"""
 		receiver_list = []
@@ -73,7 +72,7 @@ class CustomNotification(Notification):
 			if self.channel == "SMS":
 				self.send_sms(doc, context)
 
-			if self.channel == "Threema":
+			if self.custom_send_to_threema == 1:
 				self.send_threema_msg(doc, context)
 
 			if self.channel == "System Notification" or self.send_system_notification:
