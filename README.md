@@ -14,7 +14,7 @@ bench get-app https://github.com/Centura-AG/frappe_threema
 ```
 ### Step 2: Install the App on a specific Site
 ```bash
-bench --site [sitename] install-app frappe_threema   `
+bench --site [sitename] install-app frappe_threema
 ```
 ### Step 3: Configure Threema Settings
 
