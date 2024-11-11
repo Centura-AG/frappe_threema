@@ -5,14 +5,8 @@ app_description = "Threema API Intagration for Frappe"
 app_email = "info@centura.ch"
 app_license = "mit"
 
-fixtures = [
-    {
-        "dt": "Custom Field",
-        "filters": [["module", "in", [
-            "Threema"
-        ]]]
-    }
-]
+after_install = "frappe_threema.setup.after_install"
+after_migrate = "frappe_threema.setup.after_migrate"
 
 # Apps
 # ------------------
