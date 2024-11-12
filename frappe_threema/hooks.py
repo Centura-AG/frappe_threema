@@ -8,6 +8,8 @@ app_license = "mit"
 after_install = "frappe_threema.setup.after_install"
 after_migrate = "frappe_threema.setup.after_migrate"
 
+doctype_js = {"Notification" : "threema/doctype/notification/notification.js"}
+
 # Apps
 # ------------------
 

@@ -55,15 +55,17 @@ def send_via_gateway(arg):
 	headers = get_headers()
 
 	message = frappe.safe_decode(arg.get("message"))
-	threema_args = {"text": message}
-	if ts.get("from"):
-		threema_args["from"] = ts.get("from")
 
-	if ts.get("secret"):
-		threema_args["secret"] = ts.get_password("secret")
 
 	success_list = []
 	for contact in arg.get("receiver_list"):
+		threema_args = {"text": message}
+		if ts.get("from"):
+			threema_args["from"] = ts.get("from")
+
+		if ts.get("secret"):
+			threema_args["secret"] = ts.get_password("secret")
+
 		threema_args[get_recipient_specifier(contact)] = contact
 		status = send_request(ts.gateway_url, threema_args, headers)
 		if 200 <= status < 300:
@@ -73,7 +75,7 @@ def send_via_gateway(arg):
 		threema_args.update(arg)
 		create_log(threema_args, success_list)
 		if arg.get("success_msg"):
-			frappe.msgprint(_("Threema Message sent to : {0}").format("\n" + "\n".join(success_list)))
+			frappe.msgprint(_("Threema Message sent to : {0}").format(", ".join(success_list)))
 
 
 def get_headers():
