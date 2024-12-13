@@ -28,9 +28,7 @@ frappe.notification = {
                 // to find additional fields
                 let is_receiver_field = function (df) {
                     return (
-                        is_extra_receiver_field(df) ||
-                        (df.options == "User" && df.fieldtype == "Link") ||
-                        (df.options == "Customer" && df.fieldtype == "Link")
+                        is_extra_receiver_field(df)
                     );
                 };
                 let extract_receiver_field = function (df) {
@@ -53,7 +51,7 @@ frappe.notification = {
 
             if (["Threema"].includes(frm.doc.channel)) {
                 const receiver_fields = get_receiver_fields(fields, function (df) {
-                    df.options == "Threema" || df.options == "Phone" || df.options == "Mobile";
+                    return df.options === "Phone";
                 });
                 frm.fields_dict.recipients.grid.update_docfield_property(
                     "receiver_by_document_field",
