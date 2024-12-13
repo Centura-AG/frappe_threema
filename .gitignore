@@ -1,2 +1,9 @@
-hooks.cpython-312.pyc
-threema_settings.cpython-312.pyc
+.DS_Store
+*.pyc
+*.egg-info
+*.swp
+dist/
+tags
+banking/docs/current
+node_modules/
+__pycache__
