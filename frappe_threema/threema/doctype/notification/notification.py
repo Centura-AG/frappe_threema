@@ -10,7 +10,7 @@ from frappe_threema.threema.doctype.threema_settings.threema_settings import sen
 class CustomNotification(Notification):
 	def send_threema_msg(self, doc, context):
 		send_message(
-			receiver_list=super().get_receiver_list(doc, context, "mobile_no", super().get_mobile_no),
+			receiver_list=super().get_receiver_list(doc, context),
 			msg=frappe.render_template(self.message, context),
 		)
 
