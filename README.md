@@ -1,35 +1,56 @@
 # Frappe Threema
 
-**Frappe Threema** is a Threema integration for the Frappe framework, using the official [Threema API](https://gateway.threema.ch/en/developer/api). Currently, the integration supports only  **Basic mode**.
+## Overview
+Frappe Threema is a seamless integration between the Frappe framework and Threema messaging service, leveraging the official [Threema Gateway API](https://gateway.threema.ch/en/developer/api). This integration currently operates in **Basic mode**, providing a robust solution for secure messaging within your Frappe applications.
 
 ## Features
-- Seamlessly integrates Threema messaging within Frappe.
-- Allows sending messages through "Threema Center" or using "Notification".
+- Direct integration with Threema Gateway API
+- Message sending through Threema Center
+- Automated messaging via Notification system
+- Comprehensive message logging
+- Secure end-to-end communication
+- Easy-to-use interface within Frappe
+
+## Requirements
+- Frappe v15+
 
 ## Installation
+You can install this app using the [bench](https://github.com/frappe/bench) CLI:
 
-### Step 1: Install the App
 ```bash
-bench get-app https://github.com/Centura-AG/frappe_threema
+cd $PATH_TO_YOUR_BENCH
+bench get-app $URL_OF_THIS_REPO --branch main
+bench install-app frappe_threema
 ```
-### Step 2: Install the App on a specific Site
-```bash
-bench --site [sitename] install-app frappe_threema
-```
-### Step 3: Configure Threema Settings
 
-*   Go to **Threema Settings** in your Frappe instance.
-*   Enter your Threema API credentials.
-    
+## Configuration
 
-Usage
------
+1. Navigate to **Threema Settings** in your Frappe instance
+2. Configure the following:
+   - Threema API Key
+   - Gateway ID
+   - Password
+3. Save your settings
 
-*   **Send Messages**: You can send messages directly via the **Threema Center** or set up **Notifications** to automate messaging.
-*   **Threema Message Log** Will log what all messages sent via the Threema integration.
-    
+## Usage
 
-License
--------
+### Threema Center
+- Access the Threema Center to send direct messages
+- Compose and send messages to Threema users
+- View message status and delivery reports
 
-This project is licensed under the [MIT License](LICENSE).
+### Notifications
+- Set up automated messages
+- Configure notification triggers
+- Customize message templates
+
+### Message Logging
+- Track all sent messages in Threema Message Log
+- Monitor delivery status
+- Access message history
+
+## Support
+For support and issues, please create a new issue.
+
+## License
+MIT License - See LICENSE file for details
