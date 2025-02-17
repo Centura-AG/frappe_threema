@@ -1,63 +1,58 @@
 {
- "actions": [],
- "allow_rename": 1,
- "autoname": "format:SYS-THREEMA-{#####} ",
- "creation": "2024-10-28 07:45:51.659687",
- "doctype": "DocType",
- "engine": "InnoDB",
- "field_order": [
-  "sent_at",
-  "sender",
-  "message",
-  "recipient"
- ],
- "fields": [
-  {
-   "fieldname": "message",
-   "fieldtype": "Text",
-   "label": "Message",
-   "read_only": 1
-  },
-  {
-   "fieldname": "recipient",
-   "fieldtype": "Code",
-   "label": "Recipient",
-   "read_only": 1
-  },
-  {
-   "fieldname": "sender",
-   "fieldtype": "Data",
-   "label": "Sender",
-   "read_only": 1
-  },
-  {
-   "fieldname": "sent_at",
-   "fieldtype": "Datetime",
-   "label": "Sent At",
-   "read_only": 1
-  }
- ],
- "index_web_pages_for_search": 1,
- "links": [],
- "modified": "2024-11-02 14:16:26.431986",
- "modified_by": "Administrator",
- "module": "Threema",
- "name": "Threema Message Log",
- "naming_rule": "Expression",
- "owner": "Administrator",
- "permissions": [
-  {
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "System Manager",
-   "share": 1
-  }
- ],
- "sort_field": "modified",
- "sort_order": "DESC",
- "states": [],
- "track_views": 1
+  "actions": [],
+  "allow_rename": 1,
+  "autoname": "format:SYS-THREEMA-{#####} ",
+  "creation": "2024-10-28 07:45:51.659687",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": ["sent_at", "sender", "message", "recipient"],
+  "fields": [
+    {
+      "fieldname": "message",
+      "fieldtype": "Text",
+      "label": "Message",
+      "read_only": 1
+    },
+    {
+      "fieldname": "recipient",
+      "fieldtype": "Code",
+      "label": "Recipient",
+      "read_only": 1
+    },
+    {
+      "fieldname": "sender",
+      "fieldtype": "Data",
+      "label": "Sender",
+      "read_only": 1
+    },
+    {
+      "fieldname": "sent_at",
+      "fieldtype": "Datetime",
+      "label": "Sent At",
+      "read_only": 1
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "links": [],
+  "modified": "2024-11-02 14:16:26.431986",
+  "modified_by": "Administrator",
+  "module": "Threema",
+  "name": "Threema Message Log",
+  "naming_rule": "Expression",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [],
+  "track_views": 1
 }
