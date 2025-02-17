@@ -1,0 +1,12 @@
+{
+  "name": "frappe_threema",
+  "version": "1.0.0",
+  "scripts": {
+    "prettier": "npx prettier . --write"
+  },
+  "author": "Centura AG",
+  "dependencies": {},
+  "devDependencies": {
+    "prettier": "3.4.2"
+  }
+}
