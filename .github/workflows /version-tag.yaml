@@ -1,0 +1,16 @@
+name: Version Tag Creator
+
+on:
+  push:
+    paths:
+      - 'frappe_threema/__init__.py'
+    branches:
+      - 'develop'
+
+jobs:
+  call-version-tag-workflow:
+    uses: Centura-AG/centura_workflows/.github/workflows/version-tag-workflow.yaml@develop
+    permissions:
+      contents: write
+    with:
+      package_path: ${{ github.event.repository.name }}
