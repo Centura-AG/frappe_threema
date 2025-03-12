@@ -11,21 +11,24 @@
       "fieldtype": "Data",
       "in_list_view": 1,
       "label": "Gateway URL",
-      "reqd": 1
+      "reqd": 1,
+      "translatable": 1
     },
     {
       "fieldname": "from",
       "fieldtype": "Data",
       "in_list_view": 1,
       "label": "From",
-      "reqd": 1
+      "reqd": 1,
+      "translatable": 1
     },
     {
       "fieldname": "secret",
       "fieldtype": "Password",
       "in_list_view": 1,
       "label": "Secret",
-      "reqd": 1
+      "reqd": 1,
+      "translatable": 1
     }
   ],
   "index_web_pages_for_search": 1,

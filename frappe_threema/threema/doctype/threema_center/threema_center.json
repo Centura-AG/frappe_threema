@@ -11,20 +11,23 @@
       "fieldtype": "Code",
       "in_list_view": 1,
       "label": "Receiver List",
-      "reqd": 1
+      "reqd": 1,
+      "translatable": 1
     },
     {
       "fieldname": "send_message",
       "fieldtype": "Button",
       "label": "Send Message",
-      "options": "send_message"
+      "options": "send_message",
+      "translatable": 1
     },
     {
       "fieldname": "message",
       "fieldtype": "Text",
       "in_list_view": 1,
       "label": "Message",
-      "reqd": 1
+      "reqd": 1,
+      "translatable": 1
     }
   ],
   "index_web_pages_for_search": 1,

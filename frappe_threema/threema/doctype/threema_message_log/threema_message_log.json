@@ -11,25 +11,29 @@
       "fieldname": "message",
       "fieldtype": "Text",
       "label": "Message",
-      "read_only": 1
+      "read_only": 1,
+      "translatable": 1
     },
     {
       "fieldname": "recipient",
       "fieldtype": "Code",
       "label": "Recipient",
-      "read_only": 1
+      "read_only": 1,
+      "translatable": 1
     },
     {
       "fieldname": "sender",
       "fieldtype": "Data",
       "label": "Sender",
-      "read_only": 1
+      "read_only": 1,
+      "translatable": 1
     },
     {
       "fieldname": "sent_at",
       "fieldtype": "Datetime",
       "label": "Sent At",
-      "read_only": 1
+      "read_only": 1,
+      "translatable": 1
     }
   ],
   "index_web_pages_for_search": 1,
