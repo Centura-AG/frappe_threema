@@ -48,7 +48,7 @@ def send_message(receiver_list, msg, success_msg=True):
 		if frappe.db.get_single_value("Threema Settings", "gateway_url"):
 			send_via_gateway(arg)
 		else:
-			msgprint(_("Please Update Threema Settings"))
+			msgprint(_("Please update Threema Settings"))
 
 def send_via_gateway(arg):
 	ts = frappe.get_doc("Threema Settings", "Threema Settings")
@@ -103,7 +103,7 @@ def get_recipient_specifier(contact):
 	elif is_valid_email_address(contact):
 		return "email"
 	else:
-		msgprint(_("This is not a valid indetity, phone number or email: " + contact))
+		msgprint(_("This is not a valid indetity nor phone number nor email: " + contact))
 
 def is_valid_recipient_identity(identity):
 	# Check if the identity is exactly 8 alphanumeric characters
