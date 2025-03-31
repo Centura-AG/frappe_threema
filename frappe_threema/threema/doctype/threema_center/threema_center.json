@@ -12,14 +12,14 @@
       "in_list_view": 1,
       "label": "Receiver List",
       "reqd": 1,
-      "translatable": 1
+     "translatable": 0
     },
     {
       "fieldname": "send_message",
       "fieldtype": "Button",
       "label": "Send Message",
       "options": "send_message",
-      "translatable": 1
+     "translatable": 0
     },
     {
       "fieldname": "message",
@@ -27,7 +27,7 @@
       "in_list_view": 1,
       "label": "Message",
       "reqd": 1,
-      "translatable": 1
+     "translatable": 0
     }
   ],
   "index_web_pages_for_search": 1,

@@ -12,7 +12,7 @@
       "in_list_view": 1,
       "label": "Gateway URL",
       "reqd": 1,
-      "translatable": 1
+     "translatable": 0
     },
     {
       "fieldname": "from",
@@ -20,7 +20,7 @@
       "in_list_view": 1,
       "label": "From",
       "reqd": 1,
-      "translatable": 1
+     "translatable": 0
     },
     {
       "fieldname": "secret",
@@ -28,7 +28,7 @@
       "in_list_view": 1,
       "label": "Secret",
       "reqd": 1,
-      "translatable": 1
+     "translatable": 0
     }
   ],
   "index_web_pages_for_search": 1,
