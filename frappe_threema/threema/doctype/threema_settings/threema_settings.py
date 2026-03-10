@@ -31,6 +31,7 @@ def validate_receiver_nos(receiver_list):
 
 @frappe.whitelist()
 def send_message(receiver_list, msg, success_msg=True):
+		frappe.has_permission("Threema Settings", "write", throw=True)
 		import json
 		if isinstance(receiver_list, str):
 			receiver_list = json.loads(receiver_list)
