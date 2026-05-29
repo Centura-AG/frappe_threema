@@ -15,7 +15,7 @@ Frappe Threema is a seamless integration between the Frappe framework and Threem
 
 ## Requirements
 
-- Frappe v15+
+- Frappe v16+
 
 ## Installation
 
