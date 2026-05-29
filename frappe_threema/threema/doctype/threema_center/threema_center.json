@@ -1,6 +1,5 @@
 {
   "actions": [],
-  "allow_rename": 1,
   "creation": "2024-10-28 07:49:33.959093",
   "doctype": "DocType",
   "engine": "InnoDB",
@@ -12,14 +11,14 @@
       "in_list_view": 1,
       "label": "Receiver List",
       "reqd": 1,
-     "translatable": 0
+      "translatable": 0
     },
     {
       "fieldname": "send_message",
       "fieldtype": "Button",
       "label": "Send Message",
       "options": "send_message",
-     "translatable": 0
+      "translatable": 0
     },
     {
       "fieldname": "message",
@@ -27,10 +26,9 @@
       "in_list_view": 1,
       "label": "Message",
       "reqd": 1,
-     "translatable": 0
+      "translatable": 0
     }
   ],
-  "index_web_pages_for_search": 1,
   "issingle": 1,
   "links": [],
   "modified": "2024-11-02 13:33:17.095706",

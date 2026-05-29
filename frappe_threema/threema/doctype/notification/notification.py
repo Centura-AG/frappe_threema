@@ -2,26 +2,25 @@
 # For license information, please see license.txt
 
 import frappe
-import json
-from frappe.core.doctype.role.role import get_info_based_on_role, get_user_info
-from frappe.email.doctype.notification.notification import Notification
-from frappe_threema.threema.doctype.threema_settings.threema_settings import send_message
-
-class CustomNotification(Notification):
-	def send_threema_msg(self, doc, context):
-		send_message(
-			receiver_list=super().get_receiver_list(doc, context),
-			msg=frappe.render_template(self.message, context),
-		)
-
-	def send(self, doc):
-		if self.channel != "Threema":
-			return super().send(doc)
-
-		context = {"doc": doc, "alert": self, "comments": None}
-		if doc.get("_comments"):
-			context["comments"] = json.loads(doc.get("_comments"))
-
-		self.send_threema_msg(doc, context)
 
 
+class ThreemaNotificationMixin:
+    def send_notification_by_channel(self, doc, context):
+        if self.channel == "Threema":
+            try:
+                self._send_threema_msg(doc, context)
+            except Exception:
+                self.log_error("Failed to send Threema Notification")
+            if self.send_system_notification:
+                self.create_system_notification(doc, context)
+        else:
+            super().send_notification_by_channel(doc, context)
+
+    def _send_threema_msg(self, doc, context):
+        from frappe_threema.api import send_message
+
+        send_message(
+            receiver_list=self.get_receiver_list(doc, context),
+            msg=frappe.render_template(self.message, context),
+            success_msg=False,
+        )
