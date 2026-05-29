@@ -2,16 +2,17 @@
 # For license information, please see license.txt
 
 import frappe
-from frappe.model.document import Document
 
 
-class ThreemaNotificationMixin(Document):
+class ThreemaNotificationMixin:
     def send_notification_by_channel(self, doc, context):
         if self.channel == "Threema":
             try:
                 self._send_threema_msg(doc, context)
             except Exception:
                 self.log_error("Failed to send Threema Notification")
+            if self.send_system_notification:
+                self.create_system_notification(doc, context)
         else:
             super().send_notification_by_channel(doc, context)
 
