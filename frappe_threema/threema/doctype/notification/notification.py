@@ -22,4 +22,5 @@ class ThreemaNotificationMixin:
         send_message(
             receiver_list=self.get_receiver_list(doc, context),
             msg=frappe.render_template(self.message, context),
+            success_msg=False,
         )

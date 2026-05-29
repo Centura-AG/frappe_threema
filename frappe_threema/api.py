@@ -50,7 +50,14 @@ def _send_via_gateway(receivers: list[str], message: str, success_msg: bool) -> 
 
     success_list = []
     for contact in receivers:
-        specifier = _get_recipient_specifier(contact)
+        try:
+            specifier = _get_recipient_specifier(contact)
+        except frappe.ValidationError:
+            frappe.log_error(
+                title="Threema invalid recipient",
+                message=f"Skipping invalid contact: {contact}",
+            )
+            continue
         payload = {**base_payload, specifier: contact}
         if _send_request(ts.gateway_url, payload, headers):
             success_list.append(contact)
@@ -82,12 +89,11 @@ def _get_recipient_specifier(contact: str) -> str:
         return "phone"
     if _EMAIL_RE.match(contact):
         return "email"
-    frappe.throw(
+    raise frappe.ValidationError(
         _("This is not a valid identity nor phone number nor email: {0}").format(
             contact
         )
     )
-    raise frappe.ValidationError  # unreachable, satisfies type checker
 
 
 def _create_log(message: str, sent_to: list[str]) -> None:
