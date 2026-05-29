@@ -1,7 +1,6 @@
 {
   "actions": [],
-  "allow_rename": 1,
-  "autoname": "format:SYS-THREEMA-{#####} ",
+  "autoname": "format:SYS-THREEMA-{#####}",
   "creation": "2024-10-28 07:45:51.659687",
   "doctype": "DocType",
   "engine": "InnoDB",
@@ -12,31 +11,30 @@
       "fieldtype": "Text",
       "label": "Message",
       "read_only": 1,
-     "translatable": 0
+      "translatable": 0
     },
     {
       "fieldname": "recipient",
       "fieldtype": "Code",
       "label": "Recipient",
       "read_only": 1,
-     "translatable": 0
+      "translatable": 0
     },
     {
       "fieldname": "sender",
       "fieldtype": "Data",
       "label": "Sender",
       "read_only": 1,
-     "translatable": 0
+      "translatable": 0
     },
     {
       "fieldname": "sent_at",
       "fieldtype": "Datetime",
       "label": "Sent At",
       "read_only": 1,
-     "translatable": 0
+      "translatable": 0
     }
   ],
-  "index_web_pages_for_search": 1,
   "links": [],
   "modified": "2024-11-02 14:16:26.431986",
   "modified_by": "Administrator",
@@ -58,5 +56,6 @@
   "sort_field": "modified",
   "sort_order": "DESC",
   "states": [],
+  "track_changes": 1,
   "track_views": 1
 }

@@ -2,7 +2,9 @@
   "name": "frappe_threema",
   "version": "1.0.0",
   "scripts": {
-    "prettier": "npx prettier . --write"
+    "prettier": "npx prettier . --write",
+    "ruff": "ruff check . --fix && ruff format .",
+    "format": "npm run prettier && npm run ruff"
   },
   "author": "Centura AG",
   "dependencies": {},

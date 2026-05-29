@@ -3,7 +3,7 @@ name = "frappe_threema"
 authors = [
     { name = "Centura AG", email = "info@centura.ch"}
 ]
-description = "Threema API Intagration for Frappe"
+description = "Threema Gateway API Integration for Frappe"
 requires-python = ">=3.10"
 readme = "README.md"
 dynamic = ["version"]
