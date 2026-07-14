@@ -11,7 +11,5 @@ after_migrate = "frappe_threema.setup.after_migrate"
 doctype_js = {"Notification": "threema/doctype/notification/notification.js"}
 
 extend_doctype_class = {
-    "Notification": [
-        "frappe_threema.threema.doctype.notification.notification.ThreemaNotificationMixin"
-    ]
+	"Notification": ["frappe_threema.threema.doctype.notification.notification.ThreemaNotificationMixin"]
 }
