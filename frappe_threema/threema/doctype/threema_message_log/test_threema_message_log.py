@@ -6,4 +6,4 @@ from frappe.tests.utils import FrappeTestCase
 
 
 class TestThreemaMessageLog(FrappeTestCase):
-    pass
+	pass
