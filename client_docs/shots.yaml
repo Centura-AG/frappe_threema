@@ -1,0 +1,13 @@
+shots:
+  - name: threema-zentrum
+    route: /desk/threema-center
+    user: manager
+    wait: .form-layout
+  - name: threema-benachrichtigung
+    route: /desk/notification/new
+    user: manager
+    wait: .form-layout
+    steps:
+      - fill: { field: channel, value: Threema }
+      - fill: { field: document_type, value: Sales Order }
+      - scrollTo: { field: recipients }
