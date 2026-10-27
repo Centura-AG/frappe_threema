@@ -1,0 +1,9 @@
+name: Docs
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+
+jobs:
+  docs:
+    uses: Centura-AG/centura_workflows/.github/workflows/docs.yaml@develop
