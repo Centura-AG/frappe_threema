@@ -7,6 +7,7 @@ covers:
   - file:frappe_threema/threema/doctype/notification/notification.py
 owner: tbd
 order: 20
+version: 2026-10-26
 ---
 
 Mit einer Benachrichtigung im Kanal «Threema» sendet das System automatisch eine Threema-Nachricht, wenn bei einem Beleg etwas passiert. Ein Beispiel: Der Verantwortliche erhält eine Nachricht, sobald ein Auftrag gebucht ist.
