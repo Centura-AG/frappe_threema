@@ -7,6 +7,7 @@ covers:
   - doctype:Threema Message Log
 owner: tbd
 order: 10
+version: 2026-10-26
 ---
 
 Im Threema-Zentrum senden Sie eine Nachricht von Hand an eine oder mehrere Personen. Sie brauchen das zum Beispiel für eine kurzfristige Information an ein Team.
