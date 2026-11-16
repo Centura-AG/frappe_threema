@@ -29,6 +29,16 @@ class TestThreemaNotification(IntegrationTestCase):
 			doc.send_notification_by_channel(frappe._dict(name="X-1"), {"doc": frappe._dict(name="X-1")})
 		send.assert_called_once_with(receiver_list=["ABCD1234"], msg="Hello X-1", success_msg=False)
 
+	def test_threema_message_is_rendered_with_restricted_globals(self):
+		doc = self.notification()
+		with (
+			patch.object(type(doc), "get_receiver_list", return_value=["ABCD1234"]),
+			patch("frappe_threema.api.send_message"),
+			patch("frappe.render_template", return_value="Hello") as render,
+		):
+			doc.send_notification_by_channel(frappe._dict(name="X-1"), {"doc": frappe._dict(name="X-1")})
+		self.assertIs(render.call_args.kwargs.get("restrict_globals"), True)
+
 	def test_threema_errors_are_logged_and_system_notification_created(self):
 		doc = self.notification(system_notification=1)
 		with (

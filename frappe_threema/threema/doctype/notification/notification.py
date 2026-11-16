@@ -21,6 +21,9 @@ class ThreemaNotificationMixin:
 
 		send_message(
 			receiver_list=self.get_receiver_list(doc, context),
-			msg=frappe.render_template(self.message, context),
+			# written by a System Manager and rendered with the safe globals, like Frappe's own channels
+			msg=frappe.render_template(  # nosemgrep: frappe-semgrep-rules.rules.security.frappe-ssti
+				self.message, context, restrict_globals=True
+			),
 			success_msg=False,
 		)
