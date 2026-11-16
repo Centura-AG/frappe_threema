@@ -21,6 +21,7 @@ class ThreemaNotificationMixin:
 
 		send_message(
 			receiver_list=self.get_receiver_list(doc, context),
-			msg=frappe.render_template(self.message, context),
+			# like Frappe's own channels: notification templates get the safe globals only
+			msg=frappe.render_template(self.message, context, restrict_globals=True),
 			success_msg=False,
 		)
