@@ -4,39 +4,59 @@
   "creation": "2024-10-28 07:45:51.659687",
   "doctype": "DocType",
   "engine": "InnoDB",
-  "field_order": ["sent_at", "sender", "message", "recipient"],
+  "field_order": [
+    "sent_at",
+    "sender",
+    "column_break_recipient",
+    "recipient",
+    "section_break_message",
+    "message"
+  ],
   "fields": [
+    {
+      "fieldname": "sent_at",
+      "fieldtype": "Datetime",
+      "in_list_view": 1,
+      "label": "Sent At",
+      "read_only": 1,
+      "translatable": 0
+    },
+    {
+      "fieldname": "sender",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Sender",
+      "options": "User",
+      "read_only": 1,
+      "translatable": 0
+    },
+    {
+      "fieldname": "column_break_recipient",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "recipient",
+      "fieldtype": "Code",
+      "in_list_view": 1,
+      "label": "Recipient",
+      "read_only": 1,
+      "translatable": 0
+    },
+    {
+      "fieldname": "section_break_message",
+      "fieldtype": "Section Break"
+    },
     {
       "fieldname": "message",
       "fieldtype": "Text",
       "label": "Message",
       "read_only": 1,
       "translatable": 0
-    },
-    {
-      "fieldname": "recipient",
-      "fieldtype": "Code",
-      "label": "Recipient",
-      "read_only": 1,
-      "translatable": 0
-    },
-    {
-      "fieldname": "sender",
-      "fieldtype": "Data",
-      "label": "Sender",
-      "read_only": 1,
-      "translatable": 0
-    },
-    {
-      "fieldname": "sent_at",
-      "fieldtype": "Datetime",
-      "label": "Sent At",
-      "read_only": 1,
-      "translatable": 0
     }
   ],
   "links": [],
-  "modified": "2024-11-02 14:16:26.431986",
+  "modified": "2026-11-18 10:00:00.000000",
   "modified_by": "Administrator",
   "module": "Threema",
   "name": "Threema Message Log",
@@ -53,9 +73,8 @@
       "share": 1
     }
   ],
-  "sort_field": "modified",
+  "sort_field": "sent_at",
   "sort_order": "DESC",
   "states": [],
-  "track_changes": 1,
-  "track_views": 1
+  "track_changes": 1
 }

@@ -53,6 +53,10 @@ class TestSendMessage(ThreemaTestCase):
 		self.assertEqual(log.recipient.split("\n"), ["ABCD1234", "+41791234567", "max@example.com"])
 		self.assertEqual(log.sender, "Administrator")
 
+	def test_email_keeps_its_dashes(self):
+		api.send_message(["anne-marie@example.com"], "Hi", success_msg=False)
+		self.assertEqual(self.sent_payloads()[0]["email"], "anne-marie@example.com")
+
 	def test_success_message_lists_recipients(self):
 		with patch.object(frappe, "msgprint") as msgprint:
 			api.send_message(["ABCD1234"], "Hi")

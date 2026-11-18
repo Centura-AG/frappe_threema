@@ -1,11 +1,8 @@
 import frappe
 
 
-def add_threema_notification_channel():
-	"""
-	This will add Threema to existing list of Channels.
-	This will not overwrite other custom channels that came in via custom-apps
-	"""
+def add_threema_notification_channel() -> None:
+	"""Add "Threema" to the Notification channels, keeping channels added by other apps."""
 	meta = frappe.get_meta("Notification")
 	channels = meta.get_field("channel").options.split("\n")
 	if "Threema" in channels:

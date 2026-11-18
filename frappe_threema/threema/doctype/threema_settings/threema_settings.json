@@ -6,25 +6,25 @@
   "field_order": ["gateway_url", "from", "secret"],
   "fields": [
     {
+      "description": "Basic mode endpoint, usually https://msgapi.threema.ch/send_simple",
       "fieldname": "gateway_url",
       "fieldtype": "Data",
-      "in_list_view": 1,
       "label": "Gateway URL",
       "reqd": 1,
       "translatable": 0
     },
     {
+      "description": "Your Threema Gateway ID, starting with *, e.g. *ABC1234",
       "fieldname": "from",
       "fieldtype": "Data",
-      "in_list_view": 1,
-      "label": "From",
+      "label": "Gateway ID",
       "reqd": 1,
       "translatable": 0
     },
     {
+      "description": "API secret of the Gateway ID, shown in the Threema Gateway dashboard",
       "fieldname": "secret",
       "fieldtype": "Password",
-      "in_list_view": 1,
       "label": "Secret",
       "reqd": 1,
       "translatable": 0
@@ -32,7 +32,7 @@
   ],
   "issingle": 1,
   "links": [],
-  "modified": "2024-11-02 14:12:59.807872",
+  "modified": "2026-11-18 10:00:00.000000",
   "modified_by": "Administrator",
   "module": "Threema",
   "name": "Threema Settings",

@@ -4,27 +4,41 @@
 import frappe
 from frappe import _
 from frappe.model.document import Document
-from frappe.utils import cstr
 
 from frappe_threema.api import send_message
 
+NAME_SEPARATOR = " - "
+
 
 class ThreemaCenter(Document):
-	def _get_receiver_nos(self) -> list[str]:
-		if not self.receiver_list:
-			frappe.msgprint(_("Receiver List is empty. Please create Receiver List"))
-			return []
-		return [
-			cstr(d.split("-")[1]).strip() if "-" in d else cstr(d).strip()
-			for d in self.receiver_list.split("\n")
-			if d.strip()
-		]
+	# begin: auto-generated types
+	# This code is auto-generated. Do not modify anything in this block.
+
+	from typing import TYPE_CHECKING
+
+	if TYPE_CHECKING:
+		from frappe.types import DF
+
+		message: DF.Text
+		receiver_list: DF.Code
+	# end: auto-generated types
 
 	@frappe.whitelist()
 	def send_message(self):
 		if not self.message:
-			frappe.msgprint(_("Please enter message before sending"))
+			frappe.msgprint(_("Please enter a message before sending"))
 			return
-		receiver_list = self._get_receiver_nos()
-		if receiver_list:
-			send_message(receiver_list, cstr(self.message))
+
+		receivers = self._get_receivers()
+		if not receivers:
+			frappe.msgprint(_("Please enter at least one receiver"))
+			return
+
+		send_message(receivers, self.message)
+
+	def _get_receivers(self) -> list[str]:
+		return [
+			line.rpartition(NAME_SEPARATOR)[2].strip()
+			for line in (self.receiver_list or "").splitlines()
+			if line.strip()
+		]
