@@ -4,12 +4,18 @@ authors = [
     { name = "Centura AG", email = "info@centura.ch"}
 ]
 description = "Threema Gateway API Integration for Frappe"
-requires-python = ">=3.10"
+requires-python = ">=3.14"
 readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
 dynamic = ["version"]
 dependencies = [
-    # "frappe~=15.0.0" # Installed and managed by bench.
+    # "frappe~=16.0" # Installed and managed by bench.
 ]
+
+[project.urls]
+Repository = "https://github.com/Centura-AG/frappe_threema"
+Issues = "https://github.com/Centura-AG/frappe_threema/issues"
 
 [build-system]
 requires = ["flit_core >=4,<5"]
@@ -21,7 +27,7 @@ build-backend = "flit_core.buildapi"
 
 [tool.ruff]
 line-length = 110
-target-version = "py310"
+target-version = "py314"
 
 [tool.ruff.lint]
 select = [

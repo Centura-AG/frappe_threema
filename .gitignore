@@ -2,10 +2,8 @@
 *.pyc
 *.egg-info
 *.swp
+__pycache__/
+.ruff_cache/
 dist/
 tags
-banking/docs/current
 node_modules/
-yarn.lock
-frappe_threema/public/node_modules
-__pycache__

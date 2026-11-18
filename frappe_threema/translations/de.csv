@@ -1,11 +1,23 @@
-Gateway URL, Gateway-URL
-Please enter valid threema nos, Bitte geben Sie gültige Threema-Nummern ein
-Secret, Geheimnis
-Send Message, Nachricht senden
-Sent At, Gesendet am
-This is not a valid identity nor phone number nor email:, Dies ist weder eine gültige Identität noch eine Telefonnummer noch eine E-Mail:
-Threema, Threema
-Threema Center, Threema-Zentrum
-Threema Message Log, Threema-Nachrichtenprotokoll
-Threema Message sent to : {0}, Threema-Nachricht gesendet an: {0}
-Threema Settings, Threema-Einstellungen
+"API secret of the Gateway ID, shown in the Threema Gateway dashboard","API-Secret der Gateway-ID, zu finden im Threema-Gateway-Dashboard"
+"Basic mode endpoint, usually https://msgapi.threema.ch/send_simple","Endpunkt für den Basic-Modus, in der Regel https://msgapi.threema.ch/send_simple"
+Gateway ID,Gateway-ID
+Gateway URL,Gateway-URL
+Message,Nachricht
+"One receiver per line: a Threema ID, a mobile number in international format or an email address. Optionally put a name in front, e.g. Max Muster - ABCD1234","Ein Empfänger pro Zeile: eine Threema-ID, eine Mobilfunknummer im internationalen Format oder eine E-Mail-Adresse. Optional mit einem Namen davor, z. B. Max Muster - ABCD1234"
+Please enter a message before sending,Bitte geben Sie vor dem Senden eine Nachricht ein
+Please enter at least one receiver,Bitte geben Sie mindestens einen Empfänger ein
+Please enter at least one valid Threema recipient,Bitte geben Sie mindestens einen gültigen Threema-Empfänger ein
+Please update Threema Settings,Bitte füllen Sie zuerst die Threema-Einstellungen aus
+Receiver List,Empfängerliste
+Recipient,Empfänger
+Secret,Geheimnis
+Send Message,Nachricht senden
+Sender,Absender
+Sent At,Gesendet am
+Threema,Threema
+Threema Center,Threema-Zentrum
+Threema Message Log,Threema-Nachrichtenprotokoll
+Threema message sent to: {0},Threema-Nachricht gesendet an: {0}
+Threema Settings,Threema-Einstellungen
+"Your Threema Gateway ID, starting with *, e.g. *ABC1234","Ihre Threema-Gateway-ID, beginnt mit *, z. B. *ABC1234"
+"{0} is not a valid Threema ID, phone number or email address","{0} ist keine gültige Threema-ID, Telefonnummer oder E-Mail-Adresse"

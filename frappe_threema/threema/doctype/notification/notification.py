@@ -5,7 +5,9 @@ import frappe
 
 
 class ThreemaNotificationMixin:
-	def send_notification_by_channel(self, doc, context):
+	"""Sends Notifications with the channel "Threema" through the Threema Gateway."""
+
+	def send_notification_by_channel(self, doc, context) -> None:
 		if self.channel == "Threema":
 			try:
 				self._send_threema_msg(doc, context)
@@ -16,7 +18,7 @@ class ThreemaNotificationMixin:
 		else:
 			super().send_notification_by_channel(doc, context)
 
-	def _send_threema_msg(self, doc, context):
+	def _send_threema_msg(self, doc, context) -> None:
 		from frappe_threema.api import send_message
 
 		send_message(

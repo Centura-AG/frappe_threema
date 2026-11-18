@@ -6,10 +6,17 @@
   "field_order": ["receiver_list", "message", "send_message"],
   "fields": [
     {
+      "description": "One receiver per line: a Threema ID, a mobile number in international format or an email address. Optionally put a name in front, e.g. Max Muster - ABCD1234",
       "fieldname": "receiver_list",
       "fieldtype": "Code",
-      "in_list_view": 1,
       "label": "Receiver List",
+      "reqd": 1,
+      "translatable": 0
+    },
+    {
+      "fieldname": "message",
+      "fieldtype": "Text",
+      "label": "Message",
       "reqd": 1,
       "translatable": 0
     },
@@ -19,19 +26,11 @@
       "label": "Send Message",
       "options": "send_message",
       "translatable": 0
-    },
-    {
-      "fieldname": "message",
-      "fieldtype": "Text",
-      "in_list_view": 1,
-      "label": "Message",
-      "reqd": 1,
-      "translatable": 0
     }
   ],
   "issingle": 1,
   "links": [],
-  "modified": "2024-11-02 13:33:17.095706",
+  "modified": "2026-11-18 10:00:00.000000",
   "modified_by": "Administrator",
   "module": "Threema",
   "name": "Threema Center",

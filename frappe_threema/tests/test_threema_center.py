@@ -19,6 +19,14 @@ class TestThreemaCenter(IntegrationTestCase):
 			doc.send_message()
 		send.assert_called_once_with(["ABCD1234", "+41791234567"], "Hello")
 
+	def test_keeps_dashes_inside_phone_numbers_and_emails(self):
+		doc = self.center("+41 79 123-45-67\nanne-marie@example.com\nMax Muster - +41 79 765-43-21", "Hello")
+		with patch.object(threema_center, "send_message") as send:
+			doc.send_message()
+		send.assert_called_once_with(
+			["+41 79 123-45-67", "anne-marie@example.com", "+41 79 765-43-21"], "Hello"
+		)
+
 	def test_requires_message(self):
 		doc = self.center("ABCD1234")
 		with (
@@ -30,7 +38,7 @@ class TestThreemaCenter(IntegrationTestCase):
 		msgprint.assert_called_once()
 
 	def test_requires_receivers(self):
-		doc = self.center(None, "Hello")
+		doc = self.center(" \n ", "Hello")
 		with (
 			patch.object(threema_center, "send_message") as send,
 			patch.object(frappe, "msgprint") as msgprint,

@@ -1,6 +1,6 @@
 {
   "name": "frappe_threema",
-  "version": "1.0.0",
+  "private": true,
   "scripts": {
     "prettier": "npx prettier . --write",
     "ruff": "ruff check . --fix && ruff format .",
