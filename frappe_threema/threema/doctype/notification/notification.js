@@ -8,6 +8,7 @@ frappe.notification.setup_fieldname_select = function (frm) {
   if (frm.doc.channel !== 'Threema') {
     return _originalSetupFieldnameSelect(frm);
   }
+  if (!frm.doc.document_type) return;
 
   frappe.model.with_doctype(frm.doc.document_type, function () {
     const fields = frappe.get_doc('DocType', frm.doc.document_type).fields;
