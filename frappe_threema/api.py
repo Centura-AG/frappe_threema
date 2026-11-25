@@ -54,7 +54,7 @@ def _send_via_gateway(receivers: list[str], message: str, success_msg: bool) -> 
 	if settings.get("secret"):
 		base_payload["secret"] = settings.get_password("secret")
 
-	delivered = []
+	delivered, failed = [], []
 	for contact in receivers:
 		try:
 			specifier = _get_recipient_specifier(contact)
@@ -62,27 +62,50 @@ def _send_via_gateway(receivers: list[str], message: str, success_msg: bool) -> 
 			frappe.log_error(
 				title="Threema invalid recipient", message=f"Skipping invalid contact: {contact}"
 			)
+			failed.append((contact, "invalid recipient, not sent to the gateway"))
 			continue
 
-		if _send_request(settings.gateway_url, {**base_payload, specifier: contact}, headers):
+		error = _send_request(settings.gateway_url, {**base_payload, specifier: contact}, headers)
+		if error:
+			failed.append((contact, error))
+		else:
 			delivered.append(contact)
 
+	not_delivered = ", ".join(contact for contact, _error in failed)
 	if not delivered:
+		frappe.log_error(
+			title="Threema send failed: no recipient received the message",
+			message="\n".join(f"{contact}: {error}" for contact, error in failed),
+		)
+		if success_msg:
+			frappe.msgprint(
+				_("Threema message could not be sent to: {0}. The cause is in the Error Log.").format(
+					not_delivered
+				),
+				indicator="red",
+			)
 		return
 
 	_create_log(message, delivered)
 	if success_msg:
 		frappe.msgprint(_("Threema message sent to: {0}").format(", ".join(delivered)))
+		if failed:
+			frappe.msgprint(
+				_("Threema message could not be sent to: {0}. The cause is in the Error Log.").format(
+					not_delivered
+				),
+				indicator="orange",
+			)
 
 
-def _send_request(gateway_url: str, payload: dict, headers: dict) -> bool:
+def _send_request(gateway_url: str, payload: dict, headers: dict) -> str | None:
 	try:
 		response = requests.post(gateway_url, data=payload, headers=headers, timeout=30)
 		response.raise_for_status()
 	except requests.RequestException as e:
 		frappe.log_error(title="Threema send failed", message=str(e))
-		return False
-	return True
+		return str(e)
+	return None
 
 
 def _get_recipient_specifier(contact: str) -> str:
