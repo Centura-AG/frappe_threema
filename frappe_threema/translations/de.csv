@@ -16,6 +16,7 @@ Sender,Absender
 Sent At,Gesendet am
 Threema,Threema
 Threema Center,Threema-Zentrum
+Threema message could not be sent to: {0}. The cause is in the Error Log.,Threema-Nachricht konnte nicht gesendet werden an: {0}. Die Ursache steht im Fehlerprotokoll.
 Threema Message Log,Threema-Nachrichtenprotokoll
 Threema message sent to: {0},Threema-Nachricht gesendet an: {0}
 Threema Settings,Threema-Einstellungen

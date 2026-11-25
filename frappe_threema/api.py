@@ -68,6 +68,17 @@ def _send_via_gateway(receivers: list[str], message: str, success_msg: bool) -> 
 			delivered.append(contact)
 
 	if not delivered:
+		frappe.log_error(
+			title="Threema send failed",
+			message=f"The gateway accepted the message for no recipient: {', '.join(receivers)}",
+		)
+		if success_msg:
+			frappe.msgprint(
+				_("Threema message could not be sent to: {0}. The cause is in the Error Log.").format(
+					", ".join(receivers)
+				),
+				indicator="red",
+			)
 		return
 
 	_create_log(message, delivered)
