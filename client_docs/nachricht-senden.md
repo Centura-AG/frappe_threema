@@ -7,7 +7,7 @@ covers:
   - doctype:Threema Message Log
 owner: Centura-AG
 order: 10
-version: 2026-11-18
+version: 2026-11-25
 ---
 
 Im Threema-Zentrum senden Sie eine Nachricht von Hand an eine oder mehrere Personen. Sie brauchen das zum Beispiel für eine kurzfristige Information an ein Team.
@@ -16,12 +16,12 @@ Im Threema-Zentrum senden Sie eine Nachricht von Hand an eine oder mehrere Perso
 
 ## Voraussetzungen
 
-- Sie haben die Rolle «System Manager».
+- Sie haben die Rolle «System-Manager» (`System Manager`).
 - Die «Threema-Einstellungen» sind ausgefüllt: «Gateway-URL», «Gateway-ID» und «Geheimnis».
 
 ## Vorgehen
 
-1. Öffnen Sie das «Threema-Zentrum» unter `/desk/threema-center`.
+1. Öffnen Sie «Threema-Zentrum» unter `/desk/threema-center`.
 2. Tragen Sie im Feld «Empfängerliste» die Empfänger ein, einen pro Zeile. Ein Empfänger ist eine Threema-ID mit 8 Zeichen, eine Mobilfunknummer im internationalen Format ohne «+», zum Beispiel `41791234567`, oder eine E-Mail-Adresse. Sie können einen Namen voranstellen, zum Beispiel `Max Muster - ABCD1234`.
 3. Schreiben Sie den Text in das Feld «Nachricht».
 4. Klicken Sie auf «Nachricht senden».
@@ -37,6 +37,12 @@ Bei einer Mobilfunknummer oder E-Mail-Adresse findet das Gateway die Threema-ID 
 ## Häufige Fehler
 
 «Bitte geben Sie mindestens einen Empfänger ein»: Die Empfängerliste ist leer oder enthält nur Leerzeichen. Tragen Sie mindestens einen Empfänger ein.
+
+«Bitte geben Sie vor dem Senden eine Nachricht ein»: Das Feld «Nachricht» ist leer. Schreiben Sie den Text.
+
+«Bitte füllen Sie zuerst die Threema-Einstellungen aus»: In den «Threema-Einstellungen» fehlt die «Gateway-URL». Tragen Sie sie unter `/desk/threema-settings` ein.
+
+Es erscheint keine Meldung: Das Gateway hat die Nachricht für keinen Empfänger angenommen. Das System sendet dann keine Meldung und schreibt keinen Eintrag ins «Threema-Nachrichtenprotokoll». Die Ursache steht im «Fehlerprotokoll».
 
 Ein Empfänger fehlt in der Meldung: Das Gateway hat die Nachricht für diesen Empfänger abgelehnt, oder der Eintrag ist keine gültige Threema-ID, Nummer oder Adresse. Die Ursache steht im «Fehlerprotokoll».
 
