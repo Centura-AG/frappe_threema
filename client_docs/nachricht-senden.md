@@ -42,9 +42,7 @@ Bei einer Mobilfunknummer oder E-Mail-Adresse findet das Gateway die Threema-ID 
 
 «Bitte füllen Sie zuerst die Threema-Einstellungen aus»: In den «Threema-Einstellungen» fehlt die «Gateway-URL». Tragen Sie sie unter `/desk/threema-settings` ein.
 
-«Threema-Nachricht konnte nicht gesendet werden an: … Die Ursache steht im Fehlerprotokoll.»: Das Gateway hat die Nachricht für keinen Empfänger angenommen. Das System schreibt dann keinen Eintrag ins «Threema-Nachrichtenprotokoll». Die Ursache steht im «Fehlerprotokoll» unter `/desk/error-log`.
-
-Ein Empfänger fehlt in der Meldung: Das Gateway hat die Nachricht für diesen Empfänger abgelehnt, oder der Eintrag ist keine gültige Threema-ID, Nummer oder Adresse. Die Ursache steht im «Fehlerprotokoll».
+«Threema-Nachricht konnte nicht gesendet werden an: …. Die Ursache steht im Fehlerprotokoll.»: Die genannten Empfänger haben die Nachricht nicht erhalten. Das Gateway hat sie abgelehnt, oder der Eintrag ist keine gültige Threema-ID, Nummer oder Adresse. Ist die Meldung rot, hat kein Empfänger die Nachricht erhalten, und das System schreibt keinen Eintrag ins «Threema-Nachrichtenprotokoll». Ist sie orange, ging die Nachricht an die übrigen Empfänger. Die Ursache steht im «Fehlerprotokoll» unter `/desk/error-log`.
 
 ## Weitere Informationen
 

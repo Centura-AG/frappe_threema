@@ -83,18 +83,42 @@ class TestSendMessage(ThreemaTestCase):
 		msgprint.assert_called_once()
 		self.post.assert_not_called()
 
+	def summary_logs(self):
+		return [
+			c.kwargs
+			for c in self.log_error.call_args_list
+			if c.kwargs["title"] == "Threema send failed: no recipient received the message"
+		]
+
 	def test_invalid_recipient_is_skipped(self):
 		count = frappe.db.count("Threema Message Log")
 		api.send_message(["not valid!"], "Hi", success_msg=False)
 		self.post.assert_not_called()
 		self.assertEqual(self.log_error.call_args_list[0].kwargs["title"], "Threema invalid recipient")
+		self.assertEqual(
+			[s["message"] for s in self.summary_logs()],
+			["notvalid!: invalid recipient, not sent to the gateway"],
+		)
 		self.assertEqual(frappe.db.count("Threema Message Log"), count)
 
 	def test_gateway_errors_are_logged_and_skipped(self):
 		self.post.return_value.raise_for_status.side_effect = [requests.HTTPError("401"), None]
-		api.send_message(["ABCD1234", "EFGH5678"], "Hi", success_msg=False)
-		self.assertEqual(self.log_error.call_args.kwargs["title"], "Threema send failed")
+		with patch.object(frappe, "msgprint") as msgprint:
+			api.send_message(["ABCD1234", "EFGH5678"], "Hi")
+		self.assertEqual(self.log_error.call_args.kwargs, {"title": "Threema send failed", "message": "401"})
+		self.assertEqual(self.summary_logs(), [])
 		self.assertEqual(frappe.get_last_doc("Threema Message Log").recipient, "EFGH5678")
+		sent, not_sent = msgprint.call_args_list
+		self.assertIn("EFGH5678", sent.args[0])
+		self.assertNotIn("ABCD1234", sent.args[0])
+		self.assertIn("ABCD1234", not_sent.args[0])
+		self.assertNotIn("EFGH5678", not_sent.args[0])
+		self.assertEqual(not_sent.kwargs["indicator"], "orange")
+
+	def test_full_success_shows_no_failure_message(self):
+		with patch.object(frappe, "msgprint") as msgprint:
+			api.send_message(["ABCD1234", "EFGH5678"], "Hi")
+		msgprint.assert_called_once()
 
 	def test_no_accepted_recipient_is_reported_and_logged(self):
 		self.post.return_value.raise_for_status.side_effect = requests.HTTPError("401")
@@ -103,9 +127,7 @@ class TestSendMessage(ThreemaTestCase):
 			api.send_message(["ABCD1234", "EFGH5678"], "Hi")
 		self.assertIn("ABCD1234, EFGH5678", msgprint.call_args.args[0])
 		self.assertEqual(msgprint.call_args.kwargs["indicator"], "red")
-		summary = self.log_error.call_args.kwargs
-		self.assertEqual(summary["title"], "Threema send failed")
-		self.assertIn("ABCD1234, EFGH5678", summary["message"])
+		self.assertEqual([s["message"] for s in self.summary_logs()], ["ABCD1234: 401\nEFGH5678: 401"])
 		self.assertEqual(frappe.db.count("Threema Message Log"), count)
 
 	def test_no_accepted_recipient_stays_silent_for_notifications(self):
@@ -113,7 +135,7 @@ class TestSendMessage(ThreemaTestCase):
 		with patch.object(frappe, "msgprint") as msgprint:
 			api.send_message(["ABCD1234"], "Hi", success_msg=False)
 		msgprint.assert_not_called()
-		self.assertEqual(self.log_error.call_args.kwargs["title"], "Threema send failed")
+		self.assertEqual([s["message"] for s in self.summary_logs()], ["ABCD1234: 401"])
 
 	def test_recipient_specifier(self):
 		self.assertEqual(api._get_recipient_specifier("ABCD1234"), "to")
